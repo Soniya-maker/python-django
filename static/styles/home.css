@@ -1,0 +1,76 @@
+#bg {
+    height: 450px;
+    width: 720px;
+    left: 12px;
+    top: 52px;
+    border-radius: 0px;
+
+    background-image: url('../images/USmap.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#site-btns-hilmar{
+    width: 200px;
+    padding-top: 32%;
+    padding-top: 28%;
+    padding-left: 53px;
+
+}
+
+#site-btns-dalhart{
+    width: 200px;
+    padding-left: 196px;
+}
+
+#site-btns-dodge{
+    width: 200px;
+    padding-left: 55%;
+}
+
+ul li .btn-primary {
+    border-radius: 10px;
+    background-color: #B2C63B;
+    border: none;
+    width: 100px;
+    height: 30px;
+    font-size: 13px;
+}
+
+#hilmarbtnMap{
+    background: #B2C63B;
+    border-radius: 10px;
+    font-size: 12px;
+}
+
+#dodgebtnMap{
+    background: #B2C63B;
+    border-radius: 10px;
+    font-size: 12px;
+}
+
+#dalhartbtnMap{
+    background: #B2C63B;
+    border-radius: 10px;
+    font-size: 12px;
+}
+
+.timezone{
+font-style: normal;
+font-weight: 500;
+font-size: 12px;
+width: inherit;
+}
+
+.container ul{
+    margin-left: auto;
+}
+
+.text {
+
+    margin-left: 153px;
+    margin-bottom: -33px;
+    margin-top: 20px;
+    font-weight: bolder;
+    font-size: 27px;
+}

@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load static %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"
+  integrity="sha512-sW/w8s4RWTdFFSduOTGtk4isV1+190E/GghVffMA9XczdJ2MDzSzLEubKAs5h0wzgSJOQTRYyaz73L3d6RtJSg=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<title>Document</title>
+
+<body>
+  <div style="width: 600px; height: 600px; float: right;">
+    <canvas id="myChart_right"></canvas>
+  </div>
+
+  <div style="width: 600px; height: 400px; float: left;">
+    <canvas id="myChart_left"></canvas>
+  </div>
+
+  <div style="width: 600px; height: 600px; float: center;">
+    <canvas id="myChart_center"></canvas>
+  </div>
+  <script>
+    const ctx_right = document.getElementById('myChart_right').getContext('2d');
+    const ctx_left = document.getElementById('myChart_left').getContext('2d');
+    const ctx_center = document.getElementById('myChart_center').getContext('2d');
+
+    const labels = [
+      '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14',
+      '15', '16', '17', '18', '19', '20', '21', '22', '23', '24'
+    ];
+    const myChart_right = new Chart(ctx_right, {
+      type: 'line',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: 'Block Cycle Time',
+          backgroundColor: 'rgb(255, 99, 132)',
+          borderColor: 'rgb(255, 99, 132)',
+          data: [20, 80, 20, 120, 100, 140, 150, 180, 190, 200 ]
+        }]
+      },
+
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+            title: {
+              display: true,
+              text: 'Block Cycle(Seconds)'
+            }
+          },
+          x: {
+            title: {
+              display: true,
+              text: 'Hours'
+            }
+          }
+        }
+      }
+    });
+
+    const myChart_left = new Chart(ctx_left, {
+      type: 'line',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: 'Block Height',
+          backgroundColor: 'rgb(255, 99, 132)',
+          borderColor: 'rgb(255, 99, 132)',
+          data: [0, 2, 2, 5, 4, 5, 4, 7 ]
+        }]
+      },
+
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+            title: {
+              display: true,
+              text: 'Block Height(Inches)'
+            }
+          },
+          x: {
+            title: {
+              display: true,
+              text: 'Hours'
+            }
+          }
+        }
+      }
+      
+    });
+
+    const myChart_center = new Chart(ctx_center, {
+      type: 'line',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: 'Tower Vaccuum',
+          backgroundColor: 'rgb(255, 99, 132)',
+          borderColor: 'rgb(255, 99, 132)',
+          data: [0, 25, 10, 15, 30, 5, 30, 35, 40, 45 ]
+        }]
+      },
+
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+            title: {
+              display: true,
+              text: 'Vaccum(Inches)'
+            }
+          },
+          x: {
+            title: {
+              display: true,
+              text: 'Hours'
+            }
+          }
+        }
+      }
+    });
+
+  </script>
+</body>
+{% endblock %}

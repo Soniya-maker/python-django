@@ -1,0 +1,61 @@
+#shutdown{
+    background-color: rgb(220, 66, 66);
+    border-radius: 44px;
+    width: 150px;
+    height: 220px;
+}
+
+#production{
+    background-color: rgb(27, 136, 27);
+    border-radius: 44px;
+    width: auto;
+    height: 220px;
+}
+
+#cleaning{
+    background-color: rgb(240, 240, 19);
+    border-radius: 44px;
+    width: 150px;
+    height: 220px;
+}
+
+h4{
+    padding-top: 10px;
+    border-bottom: 1px solid rgb(90, 87, 87);
+}
+
+.tooltip {
+    position: relative;
+    display: contents;
+    border-bottom: 1px dotted black;
+  }
+  
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 200px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    top: -5px;
+    left: 81%;
+  }
+  
+  .tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent black transparent transparent;
+  }
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+  }
+
+  

@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en" style="overflow-x: hidden ;">
+
+<head>
+  <!-- Required meta tags -->
+  {% block head-meta %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  {% endblock %}
+  <!-- Bootstrap CSS -->
+  {% block head-css %}
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+  <script src="https://use.fontawesome.com/7a081fc85f.js"></script>
+  <title>Django!</title>
+  {% endblock %}
+</head>
+<!-- This is the start of the navigation bar at the top of the page-->
+<header>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'styles/home.css' %}">
+  
+  <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="container">
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <div class="nav-link" href="/">
+            <div class="row justify-content-around row-cols-2 row-cols-lg-3">
+              <div class="col-4 col-lg-2">
+                <button id="homebtn" type="button" class="btn btn-primary" onclick="location.href='/'">Home</button>
+              </div>
+              <div class="col-4 col-lg-2">
+                <button type="button" class="btn btn-primary"
+                  onclick="location.href='hilmar_site'">Hilmar</button>
+              </div>
+              <div class="col-4 col-lg-2">
+              <button type="button" class="btn btn-primary"
+                onclick="location.href='dalhart_site'">Dalhart</button>
+              </div>
+              <div class="col-4 col-lg-2">
+              <button type="button" class="btn btn-primary" onclick="location.href='dodge_site'">Dodge
+                City</button>
+              </div>
+              <div class="col-4 col-lg-2">
+              <button id="futurebtn" type="button" class="btn btn-primary" onclick="location.href='future_site'">Future
+                Site</button>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  </nav>
+</header>
+
+<!-- This is where you'll put your page content. Leave it blank for now. -->
+<div class="container">
+  {% block content %}Nothing Here{% endblock %}
+</div>
+
+<footer>
+  <div class="navbar navbar-inverse navbar-static-bottom" role="navigation">
+    <div class="navbar-text pull-left">
+    </div>
+
+    <!-- <div class="navbar-text pull-left">
+        &copy; Company Name, 2023
+        </div> -->
+  </div>
+</footer>
+{% block head-javascript %}
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+  integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+  integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+  integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+{% endblock %}
+
+<body style="background: rgba(217, 217, 217, 0.28);">
+</body>
+
+</html>

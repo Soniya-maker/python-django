@@ -1,0 +1,175 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'styles/home.css' %}">
+<!-- <div class="text">Select Site</div> -->
+<div class="container" id="bg">
+    <div style="width: 100%;">
+    <div id="site-btns-hilmar">
+        <img style="width: 17px; height: 17px;" src="../static/images/star-icon.jpg" />
+        <img style="width: 17px; height: 15px;" src="../static/images/arrow-icon.jpg" /><br>
+        <button id="hilmarbtnMap" type="button" class="btn btn-primary" 
+        onclick="location.href='hilmar_site'">Hilmar</button><br>
+        <div class="timezone"></div>
+    </div>
+
+    <div id="site-btns-dodge">
+        <img style="width: 17px; height: 15px;" src="../static/images/arrow-icon.jpg" />
+    <button id="dodgebtnMap" type="button" class="btn btn-primary" onclick="location.href='dodge_site'">Dodge
+        City</button>
+        <div class="timezone"></div>
+    </div>
+    
+    <div id="site-btns-dalhart">
+        <img style="width: 17px; height: 15px;" src="../static/images/arrow-icon.jpg" />
+    <button id="dalhartbtnMap" type="button" class="btn btn-primary"
+        onclick="location.href='dalhart_site'">Dalhart</button>
+        <div class="timezone"></div>
+    </div>
+</div>
+<div style="margin-top: 14%; font-size: 15px;">
+    <span>
+    <img src="../static/images/star-icon.jpg" />
+    <span>Headquarters</span>
+    </span>
+    
+    <span style="margin-left: 400px;">
+    <img src="../static/images/arrow-icon.jpg" />
+    <span>Manufacturing Sites
+    </span>
+    
+    </span>
+    </div>
+</div>
+
+<script>
+    function getLocalTime() {
+  const now = new Date();
+  const options = {
+    hour: 'numeric',
+    minute: 'numeric',
+    // second: 'numeric',
+    hour12: true
+  };
+  const localTime = now.toLocaleString('en-US', options);
+  return localTime;
+}
+
+// 
+
+// function getTimezoneTime(offset) {
+//   const now = new Date();
+//   const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+//   const timezoneTime = new Date(utc + (3600000 * offset));
+//   const options = {
+//     hour: 'numeric',
+//     minute: 'numeric',
+//     // second: 'numeric',
+//     hour12: true
+//   };
+//   const formattedTimezoneTime = timezoneTime.toLocaleString('en-US', options);
+//   return formattedTimezoneTime;
+// }
+
+// 
+
+// function updateTime() {
+//   const localTimeElement = document.querySelector('.local-time');
+//   localTimeElement.textContent = getLocalTime();
+
+//   const timezoneElements = document.querySelectorAll('.timezone');
+//   const timeOffsets = [-7, -5, -5, 5.30]; // Replace with desired time zone offsets
+//   const cities = ['Hilmar, California', 'Dodge City, Kansas', 'Dalhart, Texas', 'India']; // Add new city names here
+
+
+//   for (let i = 0; i < timezoneElements.length; i++) {
+//     const timezoneTime = getTimezoneTime(timeOffsets[i]);
+//     timezoneElements[i].textContent = timezoneTime;
+//   }
+// }
+
+// function getTimezoneTime(offset) {
+//   const now = new Date();
+//   const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+//   const timezoneTime = new Date(utc + (3600000 * offset));
+//   const options = {
+//     hour: 'numeric',
+//     minute: 'numeric',
+//     // second: 'numeric',
+//     hour12: true
+//   };
+//   const formattedTimezoneTime = timezoneTime.toLocaleString('en-US', options);
+//   return `${formattedTimezoneTime}`;
+// }
+
+
+// 
+
+window.setInterval(updateTime, 1000);
+
+function updateTime() {
+//   const localTimeElement = document.querySelector('.local-time');
+//   localTimeElement.textContent = getLocalTime();
+
+  const timezoneElements = document.querySelectorAll('.timezone');
+  const timeOffsets = [-7, -5, -5, 5.30]; // Replace with desired time zone offsets
+  //const cities = ['Hilmar, California', 'Dodge City, Kansas', 'Dalhart, Texas','India']; // Add new city names here
+
+  for (let i = 0; i < timezoneElements.length; i++) {
+    const timezoneTime = getTimezoneTime(timeOffsets[i]);
+    timezoneElements[i].textContent = timezoneTime;
+  }
+}
+
+function getTimezoneTime(offset, city) {
+  const now = new Date();
+  const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+  const timezoneTime = new Date(utc + (3600000 * (offset + isDaylightSavingTime(now))));
+  const options = {
+    hour: 'numeric',
+    minute: 'numeric',
+    hour12: true
+  };
+  const formattedTimezoneTime = timezoneTime.toLocaleString('en-US', options);
+  return `${formattedTimezoneTime}`;
+}
+
+function isDaylightSavingTime(date) {
+  const year = date.getFullYear();
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+  const dstStarts = [
+    // Array of objects with DST start dates for each year in the 50-year period
+    { year: 2022, month: 3, day: 13 }, // Example: DST starts on March 13, 2022
+    { year: 2023, month: 3, day: 12 }, // Add more objects for other years
+    // ...
+    { year: 2071, month: 3, day: 11 }
+  ];
+  const dstEnds = [
+    // Array of objects with DST end dates for each year in the 50-year period
+    { year: 2022, month: 11, day: 6 }, // Example: DST ends on November 6, 2022
+    { year: 2023, month: 11, day: 5 }, // Add more objects for other years
+    // ...
+    { year: 2071, month: 11, day: 7 }
+  ];
+
+  // Loop through the arrays and check if the current date falls within a DST period
+  for (let i = 0; i < dstStarts.length; i++) {
+    if (year === dstStarts[i].year && month > dstStarts[i].month) {
+      return 1;
+    } else if (year === dstStarts[i].year && month === dstStarts[i].month && day >= dstStarts[i].day) {
+      return 1;
+    } else if (year === dstEnds[i].year && month < dstEnds[i].month) {
+      return 1;
+    } else if (year === dstEnds[i].year && month === dstEnds[i].month && day < dstEnds[i].day) {
+      return 1;
+    }
+  }
+  return 0;
+}
+</script>
+
+
+{% endblock %}

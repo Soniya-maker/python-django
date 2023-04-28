@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'styles/dashboard.css' %}">
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
+    <h3 class="welcome_text">Welcome to Dalhart Dashboard!</h3>
+    <body onload="startTime()">
+
+<h3 style="text-align: Right;">Time Onsite</h3>
+<div style="text-align: right" id="txt"></div>
+    <script>
+
+    var el_up = document.getElementById("dalhartbtn");
+    el_up.setAttribute('style', 'background-color:grey')
+
+        function startTime() {
+          const today = new Date();
+          let h = today.getHours();
+          let m = today.getMinutes();
+          let s = today.getSeconds();
+          m = checkTime(m);
+          s = checkTime(s);
+          document.getElementById('txt').innerHTML =  h + ":" + m + ":" + s;
+          setTimeout(startTime, 1000);
+        }
+        
+        function checkTime(i) {
+          if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+          return i;
+        }
+        
+        </script>
+    <div class="row">
+        <div class="col-md-6 col-xl-4" onclick="location.href='milk_receiving'">
+            <div class="card bg-c-blue order-card">
+                <div class="card-block">
+                    <h4 class="text-center mt-4">Milk Receiving</h4>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6 col-xl-4" onclick="location.href='plant_5'">
+            <div class="card bg-c-green order-card">
+                <div class="card-block">
+                    <h4 class="text-center mt-4">Plant 5</h4>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6 col-xl-4" onclick="location.href='plant_6'">
+            <div class="card bg-c-yellow order-card">
+                <div class="card-block">
+                    <h4 class="text-center mt-4">Plant 6
+                    </h4>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6 col-xl-4" onclick="location.href='protein'">
+            <div class="card bg-c-pink order-card">
+                <div class="card-block">
+                    <h4 class="text-center mt-4">Protein
+                    </h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-xl-4" onclick="location.href='dryer'">
+            <div class="card bg-c-LightGreen order-card">
+                <div class="card-block">
+                    <h4 class="text-center mt-4">Dryer
+                    </h4>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6 col-xl-4" onclick="location.href='permeate'">
+            <div class="card bg-c-DarkSalmon order-card">
+                <div class="card-block">
+                    <h4 class="text-center mt-4">Permeate
+                    </h4>
+                </div>
+            </div>
+        </div>
+	</div>
+    </body>
+</div>
+
+{% endblock %}
